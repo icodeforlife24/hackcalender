@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Data</title>
+</head>
+<link rel="stylesheet" href="{% static 'css/webscraper.css' %}">
+<body>
+    <div class="main">
+    <h1>Hackathon Data</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Duration</th>
+        </tr>
+        {% for item in hackathons %}
+        <tr>
+            <td>{{ item.0 }}</td>
+            <td>{{ item.1 }}</td>
+            <td>{{ item.2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'download_csv' %}">Download Hackathon CSV</a>
+</div>
+</body>
+</html>
