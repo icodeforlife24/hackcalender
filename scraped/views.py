@@ -13,17 +13,17 @@ def index(request):
 
     with open(file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
-        headers = next(reader)  # skip header row
+        headers = next(reader) 
         for row in reader:
-            data.append(row)  # row = [Name, Date, Duration]
+            data.append(row)  
 
     return render(request, 'webscraper.html', {'hackathons': data})
 
 def download_csv(request):
-    # Path to your CSV file
+    
     file_path = os.path.join(os.path.dirname(__file__), 'hackathon.csv')
 
-    # Create the HttpResponse object with the appropriate CSV header.
+    
     response = HttpResponse(open(file_path, 'rb'), content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="hackathon.csv"'
 
