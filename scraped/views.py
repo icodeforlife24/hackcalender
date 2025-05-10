@@ -3,10 +3,15 @@ import csv
 import os
 from .webscraper import run
 from .webscraper2 import run2
+import threading
 
 def index(request):
-    run() 
-    run2()
+    t1=threading.Thread(target=run)
+    t2=threading.Thread(target=run2)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
     file_path = os.path.join(os.path.dirname(__file__), 'hackathon.csv')
     print(f"File path: {file_path}")
     data = []
