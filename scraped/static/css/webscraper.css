@@ -17,7 +17,7 @@ h1{
     align-items: center;
     justify-content: center;
 }
-a{
+.down{
     text-decoration: none;
     padding: 20px;
     border: 2px solid #000;
@@ -35,7 +35,7 @@ table{
     background-color: #ffebc8;
 }
 
-a:hover{
+.down :hover{
     background-color: #d8c3a5;
     color: #000;
     transition: 0.1s;

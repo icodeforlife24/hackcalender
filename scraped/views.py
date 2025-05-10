@@ -4,20 +4,16 @@ import os
 from .webscraper import run
 from .webscraper2 import run2
 import threading
+from scraped.models import Contest
+import time
 listfunc=[run,run2]
 def index(request):
+    Contest.objects.all().delete()
     for i in listfunc:
         thread=threading.Thread(target=i)
-    file_path = os.path.join(os.path.dirname(__file__), 'hackathon.csv')
-    print(f"File path: {file_path}")
-    data = []
-
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        headers = next(reader) 
-        for row in reader:
-            data.append(row)  
-
+        thread.start()
+        thread.join()
+    data = Contest.objects.all()   
     return render(request, 'webscraper.html', {'hackathons': data})
 
 def download_csv(request):

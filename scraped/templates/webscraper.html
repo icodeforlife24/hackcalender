@@ -20,14 +20,14 @@
         </tr>
         {% for item in hackathons %}
         <tr>
-            <td>{{ item.0 }}</td>
-            <td>{{ item.1 }}</td>
-            <td>{{ item.2 }}</td>
+            <td><a href={{item.link}}>{{ item.name }}</a></td>
+            <td>{{ item.start_time }}</td>
+            <td>{{ item.duration }}</td>
         </tr>
         {% endfor %}
     </table>
 
-    <a href="{% url 'download_csv' %}">Download Hackathon CSV</a>
+    <a class="down" href="{% url 'download_csv' %}">Download Hackathon CSV</a>
 </div>
 </body>
 </html>
