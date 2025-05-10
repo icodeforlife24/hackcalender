@@ -4,14 +4,10 @@ import os
 from .webscraper import run
 from .webscraper2 import run2
 import threading
-
+listfunc=[run,run2]
 def index(request):
-    t1=threading.Thread(target=run)
-    t2=threading.Thread(target=run2)
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
+    for i in listfunc:
+        thread=threading.Thread(target=i)
     file_path = os.path.join(os.path.dirname(__file__), 'hackathon.csv')
     print(f"File path: {file_path}")
     data = []
